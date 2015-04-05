@@ -1,0 +1,4 @@
+D:\Development\OpenXML25\OpenXML25\EasyOXML\bin\Debug\EasyOXML.dll
+D:\Development\OpenXML25\OpenXML25\EasyOXML\bin\Debug\EasyOXML.pdb
+D:\Development\OpenXML25\OpenXML25\EasyOXML\obj\Debug\EasyOXML.dll
+D:\Development\OpenXML25\OpenXML25\EasyOXML\obj\Debug\EasyOXML.pdb

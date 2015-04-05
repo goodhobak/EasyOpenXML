@@ -1,0 +1,14 @@
+D:\Development\OpenXML25\OpenXML25\OpenXML25\bin\Debug\OpenXML25.exe.config
+D:\Development\OpenXML25\OpenXML25\OpenXML25\obj\Debug\OpenXML25.csprojResolveAssemblyReference.cache
+D:\Development\OpenXML25\OpenXML25\OpenXML25\obj\Debug\OpenXML25.Form1.resources
+D:\Development\OpenXML25\OpenXML25\OpenXML25\obj\Debug\OpenXML25.Properties.Resources.resources
+D:\Development\OpenXML25\OpenXML25\OpenXML25\obj\Debug\OpenXML25.csproj.GenerateResource.Cache
+D:\Development\OpenXML25\OpenXML25\OpenXML25\bin\Debug\OpenXML25.exe
+D:\Development\OpenXML25\OpenXML25\OpenXML25\bin\Debug\OpenXML25.pdb
+D:\Development\OpenXML25\OpenXML25\OpenXML25\obj\Debug\OpenXML25.exe
+D:\Development\OpenXML25\OpenXML25\OpenXML25\obj\Debug\OpenXML25.pdb
+D:\Development\OpenXML25\OpenXML25\OpenXML25\bin\Debug\EasyOXML.dll
+D:\Development\OpenXML25\OpenXML25\OpenXML25\bin\Debug\EasyOXML.pdb
+D:\Development\Git_Repository\OpenXML25\OpenXML25\bin\Debug\OpenXML25.exe.config
+D:\Development\Git_Repository\OpenXML25\OpenXML25\obj\Debug\OpenXML25.exe
+D:\Development\Git_Repository\OpenXML25\OpenXML25\obj\Debug\OpenXML25.pdb
