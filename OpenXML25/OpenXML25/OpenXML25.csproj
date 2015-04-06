@@ -83,6 +83,7 @@
     <None Include="OpenXML 2.5 Examples\프레젠테이션4.pptx" />
     <None Include="OpenXML 2.5 Examples\프레젠테이션5.pptx" />
     <None Include="OpenXML 2.5 Examples\프레젠테이션6.pptx" />
+    <Compile Include="OpenXML 2.5 Examples\프레젠테이션7.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
