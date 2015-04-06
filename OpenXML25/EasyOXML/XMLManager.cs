@@ -18,7 +18,50 @@ namespace EasyOXML
 {
     public class XMLManager
     {
+        public XMLManager()
+        {
+            relId = 0;
+        }
 
+        //4:3 or 16:9 enum type
+        public enum SlideLayoutType
+        {
+            FOUR_THREE,
+            SIXTEEN_NINE
+        }
+
+        //Real size of x-maximum (width), y-maximum(height)
+        public SlideLayoutType LayoutType { get; set; }
+        public double RealWidth { get; set; }
+        public double RealHeight { get; set; }
+        //Width Scale Factor
+        public double WScale
+        {
+            get
+            {
+                return 0;
+            }
+        }
+        //Height Scale Factor
+        public double HScale
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
+        private int relId;
+        public int getNewRelId()
+        {
+            return relId++;
+        }
+
+        private PresentationDocument pDoc;
+        public void createPresentationDocument(string fileName)
+        {
+            pDoc = PresentationDocument.Create(fileName, PresentationDocumentType.Presentation);
+        }
         // Creates a PresentationDocument.
         public void CreatePackage(string filePath)
         {
