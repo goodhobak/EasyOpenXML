@@ -31,7 +31,12 @@ namespace OpenXML25
             using (SaveFileDialog dlg = new SaveFileDialog())
             {
                 dlg.ShowDialog();
-                if (dlg.FileName != "") eoxml.CreatePackage(dlg.FileName);
+                if (dlg.FileName != "")
+                {
+                    eoxml.CreatePackage(dlg.FileName);
+                    GeneratedCode.GeneratedClass7 gt = new GeneratedCode.GeneratedClass7();
+                    if(dlg.FileName.Contains("pptx")) gt.CreatePackage(dlg.FileName.Replace(".pptx", "_2.pptx"));
+                }
             }
 
         }
