@@ -326,7 +326,7 @@ namespace EasyOXML
             }
         }
 
-        // Adds child parts and generates content of the specified part.
+
         private void CreateParts(PresentationDocument document)
         {
             ThumbnailPart thumbnailPart1 = document.AddNewPart<ThumbnailPart>("image/jpeg", "rId2");
@@ -338,6 +338,7 @@ namespace EasyOXML
             ViewPropertiesPart viewPropertiesPart1 = presentationPart1.AddNewPart<ViewPropertiesPart>("rId8");
             GenerateViewPropertiesPart1Content(viewPropertiesPart1);
 
+            //페이지2 차트
             SlidePart slidePart1 = presentationPart1.AddNewPart<SlidePart>("rId3");
             GenerateSlidePart1Content(slidePart1);
 
@@ -372,6 +373,7 @@ namespace EasyOXML
             PresentationPropertiesPart presentationPropertiesPart1 = presentationPart1.AddNewPart<PresentationPropertiesPart>("rId7");
             GeneratePresentationPropertiesPart1Content(presentationPropertiesPart1);
 
+            //페이지1 - 표지
             SlidePart slidePart2 = presentationPart1.AddNewPart<SlidePart>("rId2");
             GenerateSlidePart2Content(slidePart2);
 
@@ -379,6 +381,7 @@ namespace EasyOXML
 
             presentationPart1.AddPart(slideMasterPart1, "rId1");
 
+            //페이지5 - 그림결과 입력
             SlidePart slidePart3 = presentationPart1.AddNewPart<SlidePart>("rId6");
             GenerateSlidePart3Content(slidePart3);
 
@@ -387,6 +390,7 @@ namespace EasyOXML
 
             slidePart3.AddPart(slideLayoutPart1, "rId1");
 
+            //페이지4 - 테이블
             SlidePart slidePart4 = presentationPart1.AddNewPart<SlidePart>("rId5");
             GenerateSlidePart4Content(slidePart4);
 
@@ -395,6 +399,7 @@ namespace EasyOXML
             TableStylesPart tableStylesPart1 = presentationPart1.AddNewPart<TableStylesPart>("rId10");
             GenerateTableStylesPart1Content(tableStylesPart1);
 
+            //페이지3 - 1층 레이아웃
             SlidePart slidePart5 = presentationPart1.AddNewPart<SlidePart>("rId4");
             GenerateSlidePart5Content(slidePart5);
 
@@ -708,6 +713,7 @@ namespace EasyOXML
         }
 
         // Generates content of slidePart1.
+        //페이지2 부하 결과 차트
         private void GenerateSlidePart1Content(SlidePart slidePart1)
         {
             Slide slide1 = new Slide();
@@ -2920,6 +2926,7 @@ namespace EasyOXML
         }
 
         // Generates content of slideLayoutPart1.
+        //슬라이드 레이아웃
         private void GenerateSlideLayoutPart1Content(SlideLayoutPart slideLayoutPart1)
         {
             SlideLayout slideLayout1 = new SlideLayout() { Type = SlideLayoutValues.Blank, Preserve = true };
@@ -5434,6 +5441,7 @@ namespace EasyOXML
         }
 
         // Generates content of slidePart2.
+        //페이지1 - 표지
         private void GenerateSlidePart2Content(SlidePart slidePart2)
         {
             Slide slide2 = new Slide();
@@ -5840,6 +5848,7 @@ namespace EasyOXML
         }
 
         // Generates content of slidePart3.
+        //페이지 5 그림결과 입력
         private void GenerateSlidePart3Content(SlidePart slidePart3)
         {
             Slide slide3 = new Slide();
@@ -6060,6 +6069,7 @@ namespace EasyOXML
         }
 
         // Generates content of imagePart1.
+        //큰 이미지 데이터
         private void GenerateImagePart1Content(ImagePart imagePart1)
         {
             System.IO.Stream data = GetBinaryDataStream(imagePart1Data);
@@ -6068,6 +6078,7 @@ namespace EasyOXML
         }
 
         // Generates content of slidePart4.
+        //페이지 4 테이블
         private void GenerateSlidePart4Content(SlidePart slidePart4)
         {
             Slide slide4 = new Slide();
@@ -9607,6 +9618,7 @@ namespace EasyOXML
         }
 
         // Generates content of slidePart5.
+        //페이지3 - 1층 레이아웃
         private void GenerateSlidePart5Content(SlidePart slidePart5)
         {
             Slide slide5 = new Slide();
