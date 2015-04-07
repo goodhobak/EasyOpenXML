@@ -9,8 +9,12 @@ using DocumentFormat.OpenXml.Presentation;
 using DocumentFormat.OpenXml;
 using A = DocumentFormat.OpenXml.Drawing;
 using P14 = DocumentFormat.OpenXml.Office2010.PowerPoint;
-using P15 = DocumentFormat.OpenXml.Office2013.PowerPoint;
+using C = DocumentFormat.OpenXml.Drawing.Charts;
+using C14 = DocumentFormat.OpenXml.Office2010.Drawing.Charts;
+using Cs = DocumentFormat.OpenXml.Office2013.Drawing.ChartStyle;
 using Thm15 = DocumentFormat.OpenXml.Office2013.Theme;
+using P15 = DocumentFormat.OpenXml.Office2013.PowerPoint;
+using A14 = DocumentFormat.OpenXml.Office2010.Drawing;
 using Ap = DocumentFormat.OpenXml.ExtendedProperties;
 using Vt = DocumentFormat.OpenXml.VariantTypes;
 
@@ -71,21 +75,18 @@ namespace EasyOXML
             
             //슬라이드 Thumbnail Image처리
             ThumbnailPart thumbnail = this.pDoc.AddNewPart<ThumbnailPart>("image/jpeg", "rId2");
-            thumbnail = getThumbnailPart();
+            getThumbnailPart(thumbnail);
 
             //Presenation 생성
             PresentationPart presentationPart1 = this.pDoc.AddPresentationPart();
             presentationPart1.Presentation = this.getPresentation();
         }
 
-        private ThumbnailPart getThumbnailPart()
+        private void getThumbnailPart(ThumbnailPart ret)
         {
-            ThumbnailPart ret = new ThumbnailPart();
             System.IO.Stream data = GetBinaryDataStream(thumbnailPart1Data);
             ret.FeedData(data);
             data.Close();
-
-            return ret;
         }
 
 
@@ -329,7 +330,7 @@ namespace EasyOXML
         private void CreateParts(PresentationDocument document)
         {
             ThumbnailPart thumbnailPart1 = document.AddNewPart<ThumbnailPart>("image/jpeg", "rId2");
-            thumbnailPart1 = getThumbnailPart();
+            getThumbnailPart(thumbnailPart1);
 
             PresentationPart presentationPart1 = document.AddPresentationPart();
             GeneratePresentationPart1Content(presentationPart1);
