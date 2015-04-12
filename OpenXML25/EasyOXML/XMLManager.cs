@@ -32,14 +32,38 @@ namespace EasyOXML
     {
         public XMLManager()
         {
-            relId = 0;
+            relId = 1;
+            uId = 1U;
+
+
+            slideIdList1 = new SlideIdList();
+            sldMaster1 = new SlideMasterPart();
+            sldLayout1 = new SlideLayoutPart();
+            sldLayout2 = new SlideLayoutPart();
+            
+            //프리젠테이션 초기화
+            presentation1 = new Presentation() { SaveSubsetFonts = true };
+            presentation1.AddNamespaceDeclaration("a", "http://schemas.openxmlformats.org/drawingml/2006/main");
+            presentation1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
+            presentation1.AddNamespaceDeclaration("p", "http://schemas.openxmlformats.org/presentationml/2006/main");
         }
 
-     
         //Real size of x-maximum (width), y-maximum(height)
         public SlideLayoutType LayoutType { get; set; }
         public double RealWidth { get; set; }
         public double RealHeight { get; set; }
+
+        //프리젠테이션
+        private Presentation presentation1;//
+        //슬라이드 리스트
+        private Dictionary<string, Slide> sldDic;
+        //슬라이드 마스터
+        private SlideMasterPart sldMaster1;
+        //슬라이드 레이아웃 스타일 
+        private SlideLayoutPart sldLayout1; 
+        private SlideLayoutPart sldLayout2;
+        private SlideIdList slideIdList1;// = new SlideIdList();
+
         //Width Scale Factor
         public double WScale
         {
@@ -57,10 +81,18 @@ namespace EasyOXML
             }
         }
 
+        //Relationship Id
         private int relId;
-        public int getNewRelId()
+        public string getNewRelId()
         {
-            return relId++;
+            return "rId" + relId++;
+        }
+
+        //Id
+        private UInt32Value uId;
+        public UInt32Value getUId()
+        {
+            return uId++;
         }
 
         private PresentationDocument pDoc;
@@ -89,31 +121,41 @@ namespace EasyOXML
             data.Close();
         }
 
-
-        private Presentation getPresentation()
+        //슬라이드 마스터 리스트 생성
+        private SlideMasterIdList getDefaultSlideMasterList()
         {
-            Presentation presentation1 = new Presentation() { SaveSubsetFonts = true };
-            presentation1.AddNamespaceDeclaration("a", "http://schemas.openxmlformats.org/drawingml/2006/main");
-            presentation1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
-            presentation1.AddNamespaceDeclaration("p", "http://schemas.openxmlformats.org/presentationml/2006/main");
-
-            SlideMasterIdList slideMasterIdList1 = new SlideMasterIdList();
-            SlideMasterId slideMasterId1 = new SlideMasterId() { Id = (UInt32Value)2147483660U, RelationshipId = "rId1" };
+            SlideMasterIdList slideMasterIdList1 = new SlideMasterIdList();  //   uint32.maxvalue = 4294967295U
+            
+            SlideMasterId slideMasterId1 = new SlideMasterId() 
+            { 
+                Id = (UInt32Value)UInt32Value.FromUInt32(UInt32.MaxValue/2),
+                RelationshipId = getNewRelId() 
+            };
 
             slideMasterIdList1.Append(slideMasterId1);
 
-            SlideIdList slideIdList1 = new SlideIdList();
-            SlideId slideId1 = new SlideId() { Id = (UInt32Value)256U, RelationshipId = "rId2" };
-            SlideId slideId2 = new SlideId() { Id = (UInt32Value)257U, RelationshipId = "rId3" };
-            SlideId slideId3 = new SlideId() { Id = (UInt32Value)258U, RelationshipId = "rId4" };
-            SlideId slideId4 = new SlideId() { Id = (UInt32Value)259U, RelationshipId = "rId5" };
-            SlideId slideId5 = new SlideId() { Id = (UInt32Value)260U, RelationshipId = "rId6" };
+            return slideMasterIdList1;
+        }
 
+        //프리젠테이션 가져오기
+        private Presentation getPresentation()
+        {
+            //슬라이드 마스터리스트 가져오기
+            SlideMasterIdList slideMasterIdList1 = this.getDefaultSlideMasterList();
+            
+            //슬라이드 아이디리스트
+            SlideId slideId1 = new SlideId() { Id = getUId(), RelationshipId = getNewRelId() };
+            SlideId slideId2 = new SlideId() { Id = getUId(), RelationshipId = getNewRelId() };
+            SlideId slideId3 = new SlideId() { Id = getUId(), RelationshipId = getNewRelId() };
+            SlideId slideId4 = new SlideId() { Id = getUId(), RelationshipId = getNewRelId() };
+            SlideId slideId5 = new SlideId() { Id = getUId(), RelationshipId = getNewRelId() };
             slideIdList1.Append(slideId1);
             slideIdList1.Append(slideId2);
             slideIdList1.Append(slideId3);
             slideIdList1.Append(slideId4);
             slideIdList1.Append(slideId5);
+
+
             SlideSize slideSize1 = new SlideSize() { Cx = 9144000, Cy = 6858000, Type = SlideSizeValues.Screen4x3 };
             NotesSize notesSize1 = new NotesSize() { Cx = 6858000L, Cy = 9144000L };
 
@@ -322,7 +364,8 @@ namespace EasyOXML
         {
             using (PresentationDocument package = PresentationDocument.Create(filePath, PresentationDocumentType.Presentation))
             {
-                CreateParts(package);
+                //CreateParts(package);
+                
             }
         }
 

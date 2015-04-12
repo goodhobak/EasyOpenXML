@@ -33,9 +33,9 @@ namespace OpenXML25
                 dlg.ShowDialog();
                 if (dlg.FileName != "")
                 {
-                    eoxml.CreatePackage(dlg.FileName);
-                    GeneratedCode.GeneratedClass7 gt = new GeneratedCode.GeneratedClass7();
-                    if(dlg.FileName.Contains("pptx")) gt.CreatePackage(dlg.FileName.Replace(".pptx", "_2.pptx"));
+                    //eoxml.CreatePackage(dlg.FileName);
+                    //GeneratedCode.GeneratedClass7 gt = new GeneratedCode.GeneratedClass7();
+                    if (!dlg.FileName.Contains(".pptx")) eoxml.CreatePackage(dlg.FileName + ".pptx");
                 }
             }
 
